@@ -1,0 +1,38 @@
+<h1 mat-dialog-title>Login</h1>
+<div mat-dialog-content>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <small *ngIf="!successfulLoggedIn" class="text-danger">Incorrect email or password!</small>
+    <div class="row">
+      <div class="col-25">
+        <label>Email</label>
+      </div>
+      <div class="col-75">
+        <input formControlName="id" type="text" placeholder="Ex. pat@example.com"/>
+      </div>
+      <!-- input box validation for id-->
+      <div *ngIf="(formEmail!.invalid && formEmail!.touched) || formEmail!.dirty">
+        <small *ngIf="formEmail!.errors?.required" class="text-danger">Email is <strong>required</strong></small>
+        <small *ngIf="formEmail!.errors?.pattern" class="text-danger">Please provide a <strong>valid</strong> email address</small>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-25">
+        <label>Password</label>
+      </div>
+      <div class="col-75">
+        <input formControlName="password" type="password"/>
+      </div>
+      <div *ngIf="(formPassword!.invalid && formPassword!.touched) || formPassword!.dirty">
+        <small *ngIf="formPassword!.errors?.required" class="text-danger">Password is <strong>required</strong></small>
+      </div>
+    </div>
+
+    <div class="row">
+      <button mat-raised-button color="primary" type="submit" value="Login" [disabled]="!loginForm.valid">Login</button>
+      <button mat-raised-button color="warn" (click)="onCloseLoginDialog()">Cancel</button>
+    </div>
+  </form>
+</div>
+
+

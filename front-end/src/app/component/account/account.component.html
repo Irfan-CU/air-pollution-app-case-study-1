@@ -1,0 +1,19 @@
+<p>account works!</p>
+<mat-list>
+  <mat-list-item>
+    <div>Change/Add Profile Picture</div>
+    <form [formGroup]="accountImageForm" (ngSubmit)="onImageSubmit()">
+      <input formControlName="image" type="file" (change)="selectFile($event)">
+      <button type="submit">Change profile</button>
+    </form>
+  </mat-list-item>
+
+  <mat-divider></mat-divider>
+
+  <mat-list-item>
+    <div>Change Password</div>
+    <form [formGroup]="accountPasswordForm" (ngSubmit)="onPasswordSubmit()">
+    <button type="submit">Submit</button>
+    </form>
+  </mat-list-item>
+</mat-list>

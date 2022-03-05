@@ -1,0 +1,24 @@
+<mat-toolbar class="header">
+    <div fxHide.gt-xs>
+        <button class="header-button" mat-icon-button (click)="onToggleSidenav()">
+            <mat-icon>menu</mat-icon>
+        </button>
+    </div>
+    <div>
+        <a routerLink="home">MyAirQuality</a>
+    </div>
+    <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+        <ul fxLayout fxLayoutGap="15px" class="navigation-items">
+            <div>
+                <button *ngIf="!checklogged()" mat-raised-button color="basic" (click)="openRegisterDialog()">Register</button>
+            </div>
+            <button *ngIf="checklogged()" mat-raised-button color="accent" routerLink="favorites">Favorites</button>
+            <button *ngIf="checklogged()" mat-raised-button color="warn" (click) = "onLogOut()">Logout</button>
+            <!-- <button *ngIf="checklogged()" mat-raised-button color="warn" routerLink="account" (image)="imageAdded($event)">
+              <div *ngIf="imageUrl != ''"><img [src]="imageUrl"></div>
+              <div *ngIf="imageUrl == ''">Account</div>
+            </button> -->
+            <button *ngIf="!checklogged()" mat-raised-button color="accent" (click)="openLoginDialog()">Login</button>
+        </ul>
+    </div>
+</mat-toolbar>

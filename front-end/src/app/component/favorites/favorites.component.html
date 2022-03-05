@@ -1,0 +1,40 @@
+<div class="container">
+
+    <div>
+        <div class="row" >
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Country</th>
+                  <th scope="col">City</th>
+                  <th scope="col">Pollutant</th>
+                  <th scope="col">AQI</th>
+                  <th scope="col">Liked</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let favs of favorites; index as i">
+                  <th scope="row">{{ i + 1 }}</th>
+                  <td>
+                    <i class="flag flag-united-states"></i>
+                    {{ favs.data.country }}
+                  </td>
+                  <td>{{ favs.data.city }}</td>
+                  <td>{{ favs.data.current.pollution.mainus  }}</td>
+                  <td >
+                    <span class="aqiValue"  [ngStyle]="{'background-color': aqiValue(favs.data.current.pollution.aqius)}">
+                        {{ favs.data.current.pollution.aqius  }}
+                    </span>
+                    </td>
+                  <td><mat-icon [ngStyle]="{'color':heartColorValue}" (click)='toggleFavorite(favs)'  [inline]="true" class="favorite">favorite</mat-icon></td>
+                </tr>
+                </tbody>
+              </table>
+        </div>
+
+        
+   </div>
+
+</div>
+

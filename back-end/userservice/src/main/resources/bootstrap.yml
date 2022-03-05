@@ -1,0 +1,6 @@
+### config-server
+spring:
+  cloud:
+    config:
+      enabled: true
+      uri: http://configServer:8090

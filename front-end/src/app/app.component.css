@@ -1,0 +1,21 @@
+
+ 
+mat-sidenav {
+    width: 250px;
+}
+ 
+main {
+    /* padding: 10px; */
+    background: #445d69;
+    height: 100%;
+    z-index: -2;
+    /* margin-top: 20%; */
+    mix-blend-mode: overlay;
+    margin-bottom: 0%;
+    padding-bottom: 0%;
+   
+ 
+}
+
+
+  

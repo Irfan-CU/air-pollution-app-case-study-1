@@ -1,0 +1,72 @@
+version: "3.9"
+
+services:
+
+  discovery-service:
+    container_name: discoveryService
+    build: ./discovery-service
+    ports:
+      - "8010:8010"
+    restart: always
+
+  config-server:
+      container_name: configServer
+      build: ./config-server
+      depends_on:
+        - discovery-service
+      ports:
+        - "8090:8090"
+      restart: always
+
+  air-quality-info:
+    container_name: airQualityInfo
+    build: ./air-quality-info
+    depends_on:
+      - favorite
+      - discovery-service
+    links:
+      - favorite
+      - discovery-service
+    ports:
+      - "8081:8081"
+    restart: always
+
+  api-gateway:
+    container_name: apiGateway
+    build: ./api-gateway
+    ports:
+    - "8080:8080"
+    restart: always
+
+  favorite:
+    container_name: favorite
+    build: ./favorite
+    depends_on:
+      - discovery-service
+      - mongo-service
+    links:
+      - mongo-service
+      - discovery-service
+    ports:
+      - "8020:8020"
+    restart: always
+
+  userservice:
+    container_name: userService
+    build: ./userservice
+    depends_on:
+      - favorite
+      - discovery-service
+    links:
+      - favorite
+      - discovery-service
+    ports:
+      - "9099:9099"
+    restart: always
+
+  mongo-service:
+    container_name: favoriteMongoDb
+    image: mongo
+    ports:
+      - "27017:27017"
+    restart: always

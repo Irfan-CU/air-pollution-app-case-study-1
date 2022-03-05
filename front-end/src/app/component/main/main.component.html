@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<section class="column">
+  <section class="container">
+    <section class="allRows">
+
+      <div class="row row-1 ">
+        <!-- <div class="overlay"></div> -->
+        <div class="text">
+          <h3>Climate change is real. It is happening right now</h3>
+          <!-- <h3></h3> -->
+          <p>It is the most urgent threat facing our entire species and we need to work collectively together and stop procrastinating.
+            <i>
+              Leonardo Di Caprio, Actor & Environmentalist
+            </i>
+          </p>
+        <a (click)="openRegisterDialog()">Join Us</a>
+        </div>
+      </div>
+
+      <div class="row row-2">
+            <div class="col">
+              <mat-form-field>
+                <mat-label class="mat-labels-decoration">Country</mat-label>
+                <mat-select  [(ngModel)] = "selectedCountry" name = "country">
+                  <mat-option (click)="getStates()" *ngFor="let country of countries" [value]="country">{{country}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field>
+                <mat-label class="mat-labels-decoration">State</mat-label>
+                <mat-select  [(ngModel)] = "selectedState" name = "state">
+                <mat-option (click)="getCities()" *ngFor="let state of states" [value]="state">{{state}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field>
+                <mat-label class="mat-labels-decoration">city</mat-label>
+                <mat-select [(ngModel)] = "selectedCity" name = "city">
+                <mat-option (click)="getPollutionData()" *ngFor="let city of cities" [value]="city">{{city}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+      </div>
+
+      <div class="row row-3">
+        <div class="selectedCities"  *ngFor="let recent of recents;let i=index;">
+          <div>
+            <div class="col">
+              <div class="citiesList">
+                <ul class="listItem" >
+                  <li>
+                    <mat-card class="outer-mat-card" [ngStyle]="{'background-color': aqiValue(recent.aqi)}">
+                      <div class="tp-wrapper">
+                        <div class="tp-box" (click)="toggleFlip(i)" [@flipState]="flip[i]">
+                          <div class="tp-box__side tp-box__front">
+                            <mat-card-title>
+                              {{recent.cityName}} Air Quality                        
+                            </mat-card-title>
+                            <mat-card-content>
+                              <mat-card class = "inner-mat-card-1"style="vertical-align: text-bottom; background-color:transparent; z-index: 0; border: none; box-shadow: none; display: inline-block;">
+                                <mat-card-title>
+                                  <span>
+                                    {{recent.aqi}}
+                                  </span>
+                                </mat-card-title>
+                                <mat-card-content>
+                                  <p>
+                                    Live AQI Index
+                                  </p>
+                                </mat-card-content>
+                              </mat-card>
+      
+                              <mat-card style="z-index: 1; border: none; border-left: black 2px solid;  box-shadow:none; display: inline-block; border-radius: 0%;" [ngStyle]="{'background-color': aqiValue(recent.aqi)}">
+                                <mat-card-title>                            
+                                  <img class="face-image" src="https://www.iqair.com/assets/aqi/ic-face-{{color(recent.aqi)}}.svg" style="display: inline-block;" alt="">
+                                    <div *ngIf="recent.countryName ==='USA'">
+                                      <button class = "AQIComment" style="box-shadow: none; border: none;" [ngStyle]="{'background-color': aqiValue(recent.aqi)}"
+                                        matTooltip="O3 Conc: {{recent.o3}},
+                                          SO2 Conc: {{recent.so2}},
+                                          NO3 Conc: {{recent.no2}},
+                                          Pm10 Conc: {{recent.pm10}},
+                                          Co Conc: {{recent.co}}"
+                                          matTooltipClass="example-tooltip-red"
+                                          aria-label="Button that displays a tooltip when focused or hovered over" class="example-button">
+                                          
+                                          <mat-icon>info_outline</mat-icon>
+                                       </button>
+                                    </div>
+                                </mat-card-title>
+                                <mat-card-content>
+                                  <p style="text-transform: uppercase;">
+                                    {{recent.mainPoulltant}}
+                                  </p>
+                                </mat-card-content>
+                              </mat-card>
+                            </mat-card-content>
+                            <mat-card>
+                              <mat-card-title>
+                                How to keep yourself safe in {{recent.cityName}} ?
+                              </mat-card-title>
+                            </mat-card>
+                          </div>
+    
+                          <div class="tp-box__side tp-box__back">
+                            <mat-card>
+                              <mat-card-title>
+                                Please take these precautions.
+                              </mat-card-title>
+                            </mat-card>    
+                            <mat-grid-list cols="2" rowHeight="1.5:1">
+                                  <mat-grid-tile> <img src="https://www.iqair.com/assets/recommendations/ic-health-window-{{color(recent.aqi)}}.svg"><a>
+                                    {{windowStatus(recent.aqi)}}
+                                  </a></mat-grid-tile>
+                                  <mat-grid-tile *ngIf="greaterThan(recent.aqi)" > <img src="https://www.iqair.com/assets/recommendations/ic-health-mask-{{color(recent.aqi)}}.svg"> Please wear the mask outside. </mat-grid-tile>
+                                  <mat-grid-tile > <img src="https://www.iqair.com/assets/recommendations/ic-health-sport-{{color(recent.aqi)}}.svg">{{outDoorStatus(recent.aqi)}}</mat-grid-tile>
+                                  <mat-grid-tile *ngIf="greaterThan(recent.aqi)" > <img src="https://www.iqair.com/assets/recommendations/ic-health-airpurifier-{{color(recent.aqi)}}.svg">Run an Air Purifier</mat-grid-tile>
+                                </mat-grid-list>
+                          </div>
+                         </div>
+    
+                      </div>
+                      <button mat-raised-button color="basic" style="margin-top: 6%; text-align: center; align-items: center; font-size: 30px;" >
+                        <mat-icon *ngIf="getLogIn()" (click) = 'addtoFavorites(recent)' class="favorite" [inline]="true">favorite_border</mat-icon>
+                      </button>
+                      
+                    </mat-card>
+                    </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row row-4">
+
+        <div class="menu">
+            <ul>
+              <li><a href="#">Register</a></li>
+              <li><a href="#">News</a></li>
+              <li><a href="#">Account</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+
+      </div>
+      <!-- <div (successfulRegistered)="addItem($event)"></div> -->
+    </section>
+
+    <!-- <div *ngIf="getSuccessfulRegister()?successAlertNotification():false"></div> -->
+  </section>
+</section>
+
+
+
+

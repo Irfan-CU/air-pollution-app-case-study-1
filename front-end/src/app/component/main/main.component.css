@@ -1,0 +1,385 @@
+.example-additional-selection {
+    opacity: 0.75;
+    font-size: 0.75em;
+  }
+
+.background{
+
+  /* class = "backgroud" ="{background-image: 'url(/src/app/animations/lights-planet-earth-europe.jpg)'}"; */
+  /* background: url('src/app/animations/lights-planet-earth-europe.jpg'); */
+}
+
+.container{
+  text-align: center;
+  font-family: sans-serif;
+  
+
+}
+
+.row{
+  padding-top: 6em;
+}
+
+.row-2 .mat-form-field{
+  /* background-color: black; */
+  
+  border-style: solid;
+  border-width: 1px;
+  border-radius:4%;
+  font: 1em sans-serif;
+  font-weight: 600;
+  background-color: white;
+  transition: 0.5s;
+}
+
+.row-2 .mat-form-field:hover{
+  background-color: teal;
+  text-decoration: white;
+  border-color: white;
+  border-radius:0%;
+  background-color: teal;
+  border-color: white;
+  color: white;
+  box-shadow:0px 1px 20px white;
+
+}
+
+
+
+.row-2 .mat-labels-decoration{
+  
+  display: inline-block;
+  font-size: 1em;
+  padding: 4px 5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: 2px;
+  letter-spacing: 2px;
+  
+  transition: 0.2s;
+  
+}
+
+
+
+/* For the bottom of the slected cities */
+
+.row-3{
+  padding-top: 2%;
+}
+
+.selectedCities{
+  align-items: center;
+}
+
+.selectedCities .outer-mat-card{
+ 
+  background-color: white;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+  box-shadow:0px 1px 20px black;
+  margin-top: 5%;
+  transition: 0.5s;
+  
+
+}
+.selectedCities .outer-mat-card:hover{
+  background-color: teal;
+  border-color: white;
+  color: white;
+  box-shadow:0px 1px 20px white;
+
+}
+
+.mat-tooltip{
+  /* background: #b71c1c; */
+  color: white !important; 
+  font-size: 14px !important;
+  font-weight: 300 !important;
+  font-family: sans-serif !important;
+
+}
+.example-tooltip-red{
+  /* background: rgb(136, 135, 135); */
+  color: #000;
+}
+.face-image
+{
+  width: 80px;
+  vertical-align: top;
+  height: auto;
+  margin-top: 0%;
+}
+
+
+.citiesList{
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  flex: auto;
+  justify-content: space-around;
+  flex-wrap: nowrap; /* assumes you only want one row */
+  /* margin-left: auto; */
+  /* margin-right: auto; */
+  
+  
+}
+
+ul:after {
+  content: '';
+  display: table;
+  /* width: 100%; */
+}
+ul:before {
+  content: '';
+  display: block;
+  /* margin-top: -1.25em; */
+  /* width: 100%; */
+}
+
+
+
+li {
+  /* //background-color: hotPink; */
+  color: #fff;
+  display: inline-block;
+  font: 1em/1.5 sans-serif;
+  /* margin-right: -.25em; */
+  padding-left: .75em;
+  padding-right: 1.5em;
+  /* position: relative; */
+  /* top: 1.25em; */
+}
+
+
+
+
+.mat-card-title{
+  align-items: flex-end;
+}
+.favorite{
+  color: red;
+  z-index: 2;
+  cursor: pointer;
+  font-size: 35px;
+  text-align: center;
+  
+}
+/* For the bottom of the slected cities */
+
+
+/*------FOr the cideo added----*/
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+/* Add some content at the bottom of the video/page */
+.content {
+  position: fixed;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: #f1f1f1;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Style the button used to pause/play the video */
+#myBtn {
+  width: 200px;
+  font-size: 18px;
+  padding: 10px;
+  border: none;
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+}
+
+#myBtn:hover {
+  background: #ddd;
+  color: black;
+} 
+
+
+
+
+/* FOr the added text on the main */
+.overlay
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #445d69;
+  mix-blend-mode: overlay;
+  z-index: -2;
+  opacity: 100%;
+}
+.text
+{
+  position: relative;
+  z-index: 10;
+  
+}
+
+.text h2
+{
+  font-size: 5em;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1em;
+  text-transform: uppercase;
+}
+.text h3
+{
+  font-size: 3em;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1em;
+  text-transform: uppercase;
+  
+}
+.text p
+{
+  font-size: 1.1em;
+  color: #fff;
+  margin: 20px 0;
+  font-weight: 400;
+  /* max-width: 700px; */
+}
+.text a
+{
+  display: inline-block;
+  font-size: 1em;
+  background: #fff;
+  padding: 10px 30px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: 10px;
+  color: #111;
+  letter-spacing: 2px;
+  transition: 0.2s;
+}
+.text a:hover
+{
+  background-color: teal;
+  border-color: white;
+  color: white;
+  box-shadow:0px 1px 20px white;
+  letter-spacing: 6px;
+  
+}
+.social
+{
+  position: absolute;
+  z-index: 10;
+  bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.social li
+{
+  list-style: none;
+}
+.social li a
+{
+  display: inline-block;
+  margin-right: 20px;
+  filter: invert(1);
+  transform: scale(0.5);
+  transition: 0.5s;
+}
+.social li a:hover
+{
+  transform: scale(0.5) translateY(-15px);
+}
+
+/*--------------- Row-4 menu at the end of the page --------------- */
+.row-4{
+  color: white;
+  font-size: 20px;
+  padding-top: 2%;
+  
+}
+
+.row-4  a{
+
+  color: white;
+  transition: 0.5s;
+
+}
+.row-4 a:hover{
+  color: #000;
+}
+/*--------------- Row-4 menu at the end of the page --------------- */
+
+
+/* -------------Card-Flipping in row-3------------ */
+
+
+.tp-wrapper {
+  -webkit-perspective: 800px;
+          perspective: 800px;
+}
+
+.tp-box {
+  position: relative;
+  width: 400px;
+  height: 300px;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transform         : transform 1s;
+      -ms-transform         : transform 1s;
+          transform         : transform 1s;
+}
+.tp-box__side {
+
+  width: 100%;
+  height: 100%;
+  position: absolute;
+
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.tp-box__front {
+  
+  -webkit-transform : rotateY(0deg);
+  -ms-transform     : rotateY(0deg);
+  transform         : rotateY(0deg);
+}
+.tp-box__back {
+  vertical-align: middle;
+  margin: auto;
+  align-items: center;
+  height: auto;
+  background: #23262d;
+  -webkit-transform : rotateY(-180deg);
+  -ms-transform     : rotateY(-180deg);
+  transform         : rotateY(-180deg);
+  vertical-align: middle;
+}
+
+
+
+/* -------------Card-Flipping in row-3------------ */
+
+
+
+
+

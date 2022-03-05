@@ -1,0 +1,58 @@
+<h1 mat-dialog-title>Register</h1>
+<div mat-dialog-content>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <p *ngIf="!registerForm.valid" color="red">Please enter your email and password</p>
+    <small *ngIf="userexist" class="text-danger">User already exists with this email!</small>
+    <small *ngIf="!isSuccessfulRegistered" class="text-danger">Incorrect email or password!</small>
+    <div class="row">
+      <div class="col-25">
+        <label>Email</label>
+      </div>
+      <div class="col-75">
+        <input formControlName="id" type="text" placeholder="Ex. pat@example.com"/>
+      </div>
+      <!-- input box validation for id-->
+      <div *ngIf="(formEmail!.invalid && formEmail!.touched) || formEmail!.dirty">
+        <small *ngIf="formEmail!.errors?.required" class="text-danger">Email is <strong>required</strong></small>
+        <small *ngIf="formEmail!.errors?.pattern" class="text-danger">Please provide a <strong>valid</strong> email address</small>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-25">
+        <label>Password</label>
+      </div>
+      <div class="col-75">
+        <input formControlName="password" type="password"/>
+        <!-- input box validation for password-->
+        <div *ngIf="(formPassword!.invalid && formPassword!.touched) || formPassword!.dirty">
+          <small *ngIf="formPassword!.errors?.required" class="text-danger">Password is <strong>required</strong></small>
+          <small *ngIf="formPassword!.errors?.pattern" class="text-danger">Please provide a <strong>valid</strong> password
+            <ul>
+              <li>
+                At least 8 characters in length
+              </li>
+              <li>
+                Lowercase letters
+              </li>
+              <li>
+                Uppercase letters
+              </li>
+              <li>
+                Numbers
+              </li>
+              <li>
+                Special characters
+              </li>
+            </ul>
+          </small>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <button mat-raised-button color="primary" type="submit" value="Register" [disabled]="!registerForm.valid">Register</button>
+      <button mat-raised-button color="warn" (click)="onCloseRegisterDialog()">Cancel</button>
+    </div>
+  </form>
+</div>
